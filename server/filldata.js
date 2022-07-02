@@ -15,5 +15,3 @@ for (let i = 1; i <= 150; i++) {
     imageUrl: faker.image.avatar()
   });
 }
-
-console.log(JSON.stringify(database));
