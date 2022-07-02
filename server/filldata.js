@@ -2,16 +2,18 @@
 const faker = require('faker');
 
 const database = {
-  employees: []
+  products: []
 };
 
-for (let i = 1; i <= 150; i++) {
-  database.employees.push({
+for (let i = 1; i <= 20; i++) {
+  database.products.push({
     id: i,
-    name: faker.name.findName(),
-    jobtype: faker.name.jobTitle(),
-    email: faker.internet.email(),
-    address: faker.address.streetAddress(),
-    imageUrl: faker.image.avatar()
+    price: faker.datatype.number(),
+    description: faker.commerce.productName(),
+    name: faker.commerce.product(),
+    imageUrl: faker.image.avatar(),
+    status: faker.datatype.boolean(),
+    category: faker.commerce.department()
   });
 }
+console.log(JSON.stringify(database));
