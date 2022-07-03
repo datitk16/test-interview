@@ -1,5 +1,5 @@
 <mat-card>
-  <app-table-top-bar (search)="search($event)"></app-table-top-bar>
+  <app-table-top-bar (search)="search($event)" (category)="categorySelected($event)"></app-table-top-bar>
   <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
 
     <ng-container matColumnDef="id">

@@ -26,6 +26,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'name', 'price', 'description', 'category', 'action'];
   sortedData = new Array<Product>();
   dataSource = new MatTableDataSource<Product>();
+  dataSourceOrigin = new Array<Product>();
+
   constructor(
     private dialog: MatDialog,
     private productService: ProductService,
@@ -35,13 +37,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(setProductCategories({ categories: [] }))
     this.reloadData();
-    this.store.select(selectAddNewProduct).pipe(untilDestroyed(this)).subscribe(result => {
-      if (!Constants.isEmpty(result)) {
-        console.log(result)
-      }
-    });
+    // this.store.select(selectAddNewProduct).pipe(untilDestroyed(this)).subscribe(result => {
+    //   if (!Constants.isEmpty(result)) {
+    //     console.log(result)
+    //   }
+    // });
   }
 
   ngOnDestroy() { }
@@ -102,9 +103,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
   }
 
+  categorySelected(value: string) {
+    this.dataSource.data = value === 'clear' ? this.dataSourceOrigin : this.dataSourceOrigin.filter(x => x.category === value);
+  }
+
   private reloadData() {
-    this.productService.getProducts().subscribe(res => {
-      this.dataSource.data = res;
+    this.productService.getProducts().subscribe(products => {
+      this.dataSource.data = products;
+      this.dataSourceOrigin = this.dataSource.data.slice();
+      this.store.dispatch(setProductCategories({ categories: products.map(x => x.category) }))
     })
   }
 

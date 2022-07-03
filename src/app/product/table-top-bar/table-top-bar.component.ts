@@ -1,12 +1,10 @@
-import { ProductsState } from './../+state/product.state';
-import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
-import { Product } from '../models/product.model';
+import { selectProductCategories } from './../+state/product.selectors';
+import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setAddNewProduct } from '../+state/product.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductModalComponent } from '../product-modal/product-modal.component';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { selectAddNewProduct } from '../+state/product.selectors';
+import { AppState } from 'src/app/+state/app.state';
 
 @UntilDestroy()
 @Component({
@@ -17,18 +15,19 @@ import { selectAddNewProduct } from '../+state/product.selectors';
 export class TableTopBarComponent implements OnInit, OnDestroy {
 
   @Output() search = new EventEmitter<string>();
+  @Output() category = new EventEmitter<string>();
   searchText: string | undefined;
+  categories = new Array<string>();
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<ProductsState>,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit(): void {
-    const product = new Product();
-    product.id = 1002;
-    product.name = 'asdas'
-    this.store.dispatch(setAddNewProduct({ product }));
+    this.store.select(selectProductCategories).pipe(untilDestroyed(this)).subscribe((result: any) => {
+      this.categories = result;
+    });
   }
 
   ngOnDestroy() { }
@@ -44,16 +43,14 @@ export class TableTopBarComponent implements OnInit, OnDestroy {
   }
 
   addNewProduct() {
-    const dialogRef = this.dialog.open(ProductModalComponent, {
+    this.dialog.open(ProductModalComponent, {
       width: '300px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
-
+  selectCategory(value: string) {
+    this.category.emit(value)
+  }
 }
 
 

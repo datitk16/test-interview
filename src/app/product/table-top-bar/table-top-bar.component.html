@@ -15,9 +15,13 @@
       </button>
     </div>
     <div class="action-user">
-      <mat-form-field class="search-input" appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Input text" value="Sushi">
+      <mat-form-field>
+        <mat-label>Filter by category</mat-label>
+        <mat-select (selectionChange)="selectCategory($event.value)">
+          <mat-option value="clear">None</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">{{category}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <ng-content></ng-content>

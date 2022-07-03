@@ -8,5 +8,5 @@ export const setAddNewProduct = createAction(
 
 export const setProductCategories = createAction(
   '[Product] Select Product Categories',
-  props<{ categories: [] }>()
+  props<{ categories: string[] }>()
 );
