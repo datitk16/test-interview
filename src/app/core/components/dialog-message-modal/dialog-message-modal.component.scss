@@ -1,0 +1,26 @@
+@import '../../../../styles/variables.scss';
+
+h2 {
+    margin-top: 5px;
+}
+
+.info {
+    color:rgb(29, 101, 170);
+}
+
+.error {
+    color: red;
+}
+
+.confirm {
+    color: orange;
+}
+
+
+button {
+    margin: 0 auto;
+}
+
+mat-dialog-actions {
+    margin-top: 6px;
+}

@@ -3,5 +3,22 @@ table{
 }
 
 .top-content{
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: baseline;
+  .action-user{
+    margin-right: 50px;
+  }
+}
+
+.view-product{
+  margin: 0 20px;
+}
+
+.column{
+  width: 15%;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+  border-color: blue;
 }

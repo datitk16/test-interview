@@ -5,7 +5,7 @@ const database = {
   products: []
 };
 
-for (let i = 1; i <= 20; i++) {
+for (let i = 1; i <= 10; i++) {
   database.products.push({
     id: i,
     price: faker.datatype.number(),

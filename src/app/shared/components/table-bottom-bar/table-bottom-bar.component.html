@@ -1,0 +1,16 @@
+<div class="d-flex bottom-nav">
+  <div>
+    <mat-form-field>
+      <input matInput (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText" placeholder="Search Keywords">
+
+      <button color="primary" matSuffix mat-icon-button (click)="clearSearch()">
+        <mat-icon>
+          {{searchText ? 'close' : 'search'}}
+        </mat-icon>
+      </button>
+    </mat-form-field>
+    <ng-content></ng-content>
+  </div>
+  <mat-paginator [length]="dataLengh" [showFirstLastButtons]="true" [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+</div>

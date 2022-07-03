@@ -6,9 +6,13 @@ import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { DialogMessageModalComponent } from './components/dialog-message-modal/dialog-message-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    DialogMessageModalComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
+    HttpClientModule,
+    MatDialogModule
   ],
   exports: [
     DashboardLayoutComponent

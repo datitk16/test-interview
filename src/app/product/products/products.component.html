@@ -1,51 +1,65 @@
 <mat-card>
   <div class="top-content">
-    <button mat-raised-button>
-      <mat-icon color="primary" matTooltip="Add new Product">add_circle_outline</mat-icon>
-      Add new Product
-    </button>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Sushi">
-    </mat-form-field>
-
-
+    <div class="action-user">
+      <button mat-raised-button (click)="addNewProduct()" class="add-new">
+        <mat-icon color="primary" matTooltip="Add new Product">add_circle_outline</mat-icon>
+        Add new Product
+      </button>
+    </div>
+    <div class="action-user">
+      <mat-form-field class="search-input" appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Input text" value="Sushi">
+      </mat-form-field>
+    </div>
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDisableClear
+    matSortDirection="desc">
 
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id" width="15%"> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef width="15%"> Name </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef width="15%"> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef width="20%"> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef width="15%"> Category </th>
+      <td mat-cell *matCellDef="let element"> {{element.category}} </td>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-
+        <button mat-raised-button>
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button mat-raised-button class="view-product">
+          <mat-icon color="primary">remove_red_eye</mat-icon>
+        </button>
+        <button mat-raised-button (click)="deleteItem(element.id)">
+          <mat-icon color="primary">delete_forever</mat-icon>
+        </button>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
-  </mat-paginator>
+  <app-table-bottom-bar [dataLengh]="dataLength">
+  </app-table-bottom-bar>
 </mat-card>

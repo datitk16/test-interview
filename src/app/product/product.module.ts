@@ -10,6 +10,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
+import { ProductModalComponent } from './product-modal/product-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProductService } from './services/product.service';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent, data: { pageTitle: 'Manage Products' } },
@@ -17,9 +21,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProductsComponent
+    ProductsComponent,
+    ProductModalComponent
   ],
   imports: [
+    CommonModule,
+    MatDialogModule,
     MatInputModule,
     MatTooltipModule,
     SharedModule,
@@ -31,5 +38,8 @@ const routes: Routes = [
     MatIconModule,
     RouterModule.forChild(routes)
   ],
+  providers: [
+    ProductService,
+  ]
 })
 export class ProductModule { }
