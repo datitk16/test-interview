@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogMessageModalComponent } from './components/dialog-message-modal/dialog-message-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
@@ -22,7 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSortModule
   ],
   exports: [
     DashboardLayoutComponent

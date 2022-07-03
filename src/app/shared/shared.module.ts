@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatIconModule,
     MatInputModule,
+    MatSortModule
   ],
   exports: [
     TableBottomBarComponent

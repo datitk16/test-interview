@@ -1,4 +1,4 @@
-import { Observable, of, Subject } from 'rxjs';
+import { auditTime, catchError, map, merge, Observable, of, startWith, Subject, switchMap } from 'rxjs';
 
 import { AfterViewInit, ChangeDetectorRef, Injectable, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
@@ -14,7 +14,6 @@ export abstract class BaseDataTableComponent<T, TRequest extends PaginationReque
   dataSource: T[] = [];
   dataLength: number;
   @ViewChild(TableBottomBarComponent, { static: true }) tableBottomBarComponent: TableBottomBarComponent;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   protected dataRequest: TRequest;
 
@@ -24,9 +23,33 @@ export abstract class BaseDataTableComponent<T, TRequest extends PaginationReque
   constructor() { }
 
   ngAfterViewInit() {
-    // this.sort.sortChange.pipe(untilDestroyed(this)).subscribe(() => this.tableBottomBarComponent.paginator.pageIndex = 0);
+    // this.tableBottomBarComponent.search.asObservable().pipe(untilDestroyed(this)).subscribe(text => this.search$.next(text));
 
     // this.tableBottomBarComponent.search.asObservable().pipe(untilDestroyed(this)).subscribe(text => this.search$.next(text));
+
+    // merge(this.tableBottomBarComponent.paginator.page, this.search$.pipe(auditTime(300)), this.reload$)
+    //   .pipe(
+    //     untilDestroyed(this),
+    //     // startWith({}),
+    //     // filter(() => !this.requireInitialRequest || !!this.dataRequest),
+    //     switchMap(() => {
+    //       const request = this.dataRequest || new PaginationRequest();
+    //       request.pageNumber = this.tableBottomBarComponent.paginator.pageIndex + 1;
+    //       request.pageSize = this.tableBottomBarComponent.paginator.pageSize;
+    //       request.keyword = this.tableBottomBarComponent.searchText;
+    //       return this.getDataList(request as TRequest);
+    //     }),
+    //     map(res => {
+    //       this.dataLength = res.totalItems;
+    //       return res.dataList;
+    //     }),
+    //     catchError(() => {
+    //       return of([]);
+    //     })
+    //   ).subscribe(data => {
+    //     this.dataSource = data;
+    //     // this.cdr.markForCheck();
+    //   });
 
   }
 

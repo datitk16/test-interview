@@ -8,14 +8,15 @@ import { BaseDataTableComponent } from 'src/app/shared/components/base-data-tabl
 import { from, Observable } from 'rxjs';
 import { PaginationResult } from 'src/app/shared/models/pagination-result.model';
 import { MatDialogModalService } from 'src/app/core/services/mat-dialog-modal.service';
+import { Sort } from '@angular/material/sort';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent extends BaseDataTableComponent<Product, ProductRequest> implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'price', 'description', 'category', 'action'];
-
+  sortedData = new Array<Product>();
   constructor(
     private dialog: MatDialog,
     private productService: ProductService,
@@ -38,7 +39,6 @@ export class ProductsComponent extends BaseDataTableComponent<Product, ProductRe
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 
@@ -53,6 +53,36 @@ export class ProductsComponent extends BaseDataTableComponent<Product, ProductRe
 
   add(event: Event) {
     event.stopPropagation();
+  }
+
+  sortData(sort: Sort) {
+    const data = this.dataSource.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+
+    this.dataSource = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'id':
+          return this.compare(a.id, b.id, isAsc);
+        case 'name':
+          return this.compare(a.name, b.name, isAsc);
+        case 'price':
+          return this.compare(a.price, b.price, isAsc);
+        case 'description':
+          return this.compare(a.description, b.description, isAsc);
+        case 'category':
+          return this.compare(a.category, b.category, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+
+  private compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
   protected getDataList(request: ProductRequest): Observable<PaginationResult<Product>> {

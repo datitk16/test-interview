@@ -14,6 +14,7 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductService } from './services/product.service';
 import { CommonModule } from '@angular/common';
+import { MatSortModule } from '@angular/material/sort';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent, data: { pageTitle: 'Manage Products' } },
@@ -36,6 +37,7 @@ const routes: Routes = [
     MatCardModule,
     MatPaginatorModule,
     MatIconModule,
+    MatSortModule,
     RouterModule.forChild(routes)
   ],
   providers: [
