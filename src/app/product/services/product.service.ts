@@ -38,7 +38,7 @@ export class ProductService {
       )
   }
 
-  getList(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http
       .get<Product[]>(environment.serverAddress).pipe(
         retry(2),

@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DialogMessageModalComponent } from './components/dialog-message-modal/dialog-message-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from '../+state/app.reducer';
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
@@ -24,7 +27,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     HttpClientModule,
     MatDialogModule,
-    MatSortModule
+    MatSortModule,
+    StoreModule.forRoot({ app: reducer }),
+    EffectsModule.forRoot([]),
   ],
   exports: [
     DashboardLayoutComponent

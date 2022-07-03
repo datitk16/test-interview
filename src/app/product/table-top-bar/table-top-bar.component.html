@@ -1,0 +1,25 @@
+<div class="d-flex bottom-nav">
+  <div class="top-content">
+    <mat-form-field>
+      <input matInput (keyup)="onSearch($event.target.value)" [(ngModel)]="searchText" placeholder="Search Keywords">
+      <button color="primary" matSuffix mat-icon-button (click)="clearSearch()">
+        <mat-icon>
+          {{searchText ? 'close' : 'search'}}
+        </mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="action-user">
+      <button mat-raised-button class="add-new" (click)="addNewProduct()">
+        <mat-icon color="primary" matTooltip="Add new Product">add_circle_outline</mat-icon>
+        Add new Product
+      </button>
+    </div>
+    <div class="action-user">
+      <mat-form-field class="search-input" appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Input text" value="Sushi">
+      </mat-form-field>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

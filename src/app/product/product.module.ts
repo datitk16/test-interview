@@ -15,6 +15,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductService } from './services/product.service';
 import { CommonModule } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';
+import { TableTopBarComponent } from './table-top-bar/table-top-bar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './+state/product.reducer';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent, data: { pageTitle: 'Manage Products' } },
@@ -23,9 +28,13 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ProductsComponent,
-    ProductModalComponent
+    ProductModalComponent,
+    TableTopBarComponent
   ],
   imports: [
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     MatDialogModule,
     MatInputModule,
@@ -38,7 +47,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatIconModule,
     MatSortModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('productState', reducer),
   ],
   providers: [
     ProductService,

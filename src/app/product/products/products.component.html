@@ -1,21 +1,5 @@
 <mat-card>
-  <div class="top-content">
-    <div class="action-user">
-      <button mat-raised-button (click)="addNewProduct()" class="add-new">
-        <mat-icon color="primary" matTooltip="Add new Product">add_circle_outline</mat-icon>
-        Add new Product
-      </button>
-    </div>
-    <div class="action-user">
-      <mat-form-field class="search-input" appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Input text" value="Sushi">
-      </mat-form-field>
-    </div>
-  </div>
-
-  <app-table-bottom-bar [dataLengh]="dataLength">
-  </app-table-bottom-bar>
+  <app-table-top-bar (search)="search($event)"></app-table-top-bar>
   <table *ngIf="dataSource" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
 
     <ng-container matColumnDef="id">

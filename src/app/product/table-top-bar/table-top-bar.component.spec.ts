@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableBottomBarComponent } from './table-bottom-bar.component';
+import { TableTopBarComponent } from './table-top-bar.component';
 
-describe('TableBottomBarComponent', () => {
-  let component: TableBottomBarComponent;
-  let fixture: ComponentFixture<TableBottomBarComponent>;
+describe('TableTopBarComponent', () => {
+  let component: TableTopBarComponent;
+  let fixture: ComponentFixture<TableTopBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableBottomBarComponent ]
+      declarations: [ TableTopBarComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableBottomBarComponent);
+    fixture = TestBed.createComponent(TableTopBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

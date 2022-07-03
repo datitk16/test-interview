@@ -1,8 +1,5 @@
 .bottom-nav {
   bottom: 0;
-  border-top-color: rgba(0, 0, 0, 0.12);
-  border-top-width: 1px;
-  border-top-style: solid;
   background-color: white;
   justify-content: space-between;
   display: flex;
@@ -13,4 +10,13 @@
 
 mat-icon {
   cursor: pointer;
+}
+
+.top-content{
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  .action-user{
+    margin-right: 50px;
+  }
 }
