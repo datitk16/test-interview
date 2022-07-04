@@ -52,12 +52,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() { }
 
-  deleteItem(id: number) {
+  deleteItem(product: Product) {
     this.dialogMessage.showConfirmMessage('Are you sure want delete product?', () => {
-      this.productService.deleteItem(id).subscribe(() => {
+      product.status = false;
+      this.productService.updateProduct(product).subscribe(() => {
         this.reloadData();
         this.dialogMessage.showInfoMessage('Removed product successfuly');
       })
+      // this.productService.deleteItem(id).subscribe(() => {
+      //   this.reloadData();
+      //   this.dialogMessage.showInfoMessage('Removed product successfuly');
+      // })
     });
   }
 
@@ -117,7 +122,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   private reloadData() {
     this.productService.getProducts().subscribe(products => {
-      this.dataSource.data = products;
+      this.dataSource.data = products.filter(x => x.status === true);
       this.dataSourceOrigin = this.dataSource.data.slice();
       this.store.dispatch(setProductCategories({ categories: products.map(x => x.category) }))
     })

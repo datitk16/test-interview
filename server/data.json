@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "id": 11,
-      "price": 1,
-      "description": "Awesome Metal Gloves",
-      "name": "S3123123123",
-      "imageUrl": "https://cdn.fakercloud.com/avatars/iamsteffen_128.jpg",
-      "status": true,
-      "category": "Baby"
-    },
-    {
       "id": 12,
       "price": 56388,
       "description": "Generic Frozen Chicken",
@@ -42,7 +33,7 @@
       "description": "Ergonomic Plastic Pizza",
       "name": "Bike",
       "imageUrl": "https://cdn.fakercloud.com/avatars/overra_128.jpg",
-      "status": true,
+      "status": false,
       "category": "Baby"
     },
     {
@@ -917,6 +908,21 @@
       "description": "123123",
       "category": "Baby",
       "id": 139
+    },
+    {
+      "name": "1",
+      "price": 1,
+      "description": "1",
+      "category": "Beauty",
+      "id": 140
+    },
+    {
+      "name": "123",
+      "price": 123,
+      "description": "123",
+      "category": "Beauty",
+      "status": true,
+      "id": 141
     }
   ]
 }

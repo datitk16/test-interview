@@ -5,6 +5,6 @@ export class Product extends BaseModal {
   description: string;
   name: string;
   imageUrl: string;
-  status: true;
+  status: boolean;
   category: string;
 }

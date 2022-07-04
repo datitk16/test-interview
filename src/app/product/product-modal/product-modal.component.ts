@@ -46,6 +46,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
     this.product.price = this.formGroup.value.price;
     this.product.description = this.formGroup.value.description;
     this.product.category = this.formGroup.value.category;
+    this.product.status = true;
     this.store.dispatch(setAddOrUpdateProduct({ product: this.product }));
   }
 

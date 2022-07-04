@@ -29,14 +29,14 @@ export class ProductService {
       'Something bad happened; please try again later.');
   };
 
-  deleteItem(id: number) {
-    return this.http
-      .delete<Product>(environment.serverAddress + '/' + id, this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
+  // deleteItem(id: number) {
+  //   return this.http
+  //     .delete<Product>(environment.serverAddress + '/' + id, this.httpOptions)
+  //     .pipe(
+  //       retry(2),
+  //       catchError(this.handleError)
+  //     )
+  // }
 
   getProducts(): Observable<Product[]> {
     return this.http
