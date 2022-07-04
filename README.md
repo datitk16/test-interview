@@ -1,6 +1,4 @@
 # Development Setup
-json-server --watch ./server/data.json --port 3000
-
 #Tech stack
 - [Angular 14](https://angular.io/)
 - [json-server](https://github.com/typicode/json-server) & [faker.js](https://fakerjs.dev/guide/) mock a REST API BackEnd
@@ -36,3 +34,9 @@ json-server --watch ./server/data.json --port 3000
                 |    └── price-directive - for format price
                 ├── constants 
                 └── models ```
+
+
+```clone https://github.com/datitk16/test-interview.git ```
+- run command : json-server --watch ./server/data.json --port 3000 (start server port 3000)
+- npm start ( start angular project port 4200)
+
