@@ -39,5 +39,6 @@
 ```
 clone source code : ``` git clone https://github.com/datitk16/test-interview.git ```
 - open terminal run command : ```json-server --watch ./server/data.json --port 3000 ``` (start server port 3000)
+- open new terminal run " ```npm run filldata``` fill data to data.json file (run ```npm run cleardata``` clear all data in data.json file)
 - open new terminal run : ```npm start ```( start angular project port 4200)
 
