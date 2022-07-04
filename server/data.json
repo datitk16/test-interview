@@ -1,37 +1,10 @@
 {
   "products": [
     {
-      "id": 8,
-      "price": 78404,
-      "description": "Refined Fresh Mouse",
-      "name": "Salad",
-      "imageUrl": "https://cdn.fakercloud.com/avatars/sta1ex_128.jpg",
-      "status": false,
-      "category": "Outdoors"
-    },
-    {
-      "id": 9,
-      "price": 85377,
-      "description": "Unbranded Granite Fish",
-      "name": "Fish",
-      "imageUrl": "https://cdn.fakercloud.com/avatars/axel_128.jpg",
-      "status": false,
-      "category": "Music"
-    },
-    {
-      "id": 10,
-      "price": 92964,
-      "description": "Generic Wooden Bike",
-      "name": "Chicken",
-      "imageUrl": "https://cdn.fakercloud.com/avatars/fronx_128.jpg",
-      "status": true,
-      "category": "Computers"
-    },
-    {
       "id": 11,
-      "price": 91295,
+      "price": 1,
       "description": "Awesome Metal Gloves",
-      "name": "Soap",
+      "name": "S3123123123",
       "imageUrl": "https://cdn.fakercloud.com/avatars/iamsteffen_128.jpg",
       "status": true,
       "category": "Baby"
@@ -40,7 +13,7 @@
       "id": 12,
       "price": 56388,
       "description": "Generic Frozen Chicken",
-      "name": "Cheese",
+      "name": "Cheese34234324",
       "imageUrl": "https://cdn.fakercloud.com/avatars/rob_thomas10_128.jpg",
       "status": false,
       "category": "Beauty"
@@ -550,15 +523,6 @@
       "category": "Garden"
     },
     {
-      "id": 70,
-      "price": 61996,
-      "description": "Ergonomic Cotton Tuna",
-      "name": "Tuna",
-      "imageUrl": "https://cdn.fakercloud.com/avatars/sircalebgrove_128.jpg",
-      "status": true,
-      "category": "Computers"
-    },
-    {
       "id": 71,
       "price": 83429,
       "description": "Generic Steel Fish",
@@ -809,6 +773,150 @@
       "imageUrl": "https://cdn.fakercloud.com/avatars/kurafire_128.jpg",
       "status": false,
       "category": "Tools"
+    },
+    {
+      "id": 100
+    },
+    {
+      "id": 101
+    },
+    {
+      "id": 102
+    },
+    {
+      "id": 103
+    },
+    {
+      "id": 104
+    },
+    {
+      "id": 105
+    },
+    {
+      "id": 106
+    },
+    {
+      "id": 107
+    },
+    {
+      "id": 108
+    },
+    {
+      "id": 109
+    },
+    {
+      "name": "1233",
+      "price": 123123,
+      "description": "123",
+      "category": "Health",
+      "id": 110
+    },
+    {
+      "id": 111
+    },
+    {
+      "id": 112
+    },
+    {
+      "id": 113
+    },
+    {
+      "id": 114
+    },
+    {
+      "name": "23",
+      "price": 23123,
+      "description": "123123",
+      "category": "Baby",
+      "id": 115
+    },
+    {
+      "id": 116
+    },
+    {
+      "id": 117
+    },
+    {
+      "id": 118
+    },
+    {
+      "id": 119
+    },
+    {
+      "id": 120
+    },
+    {
+      "id": 121
+    },
+    {
+      "id": 122
+    },
+    {
+      "id": 123
+    },
+    {
+      "id": 124
+    },
+    {
+      "id": 125
+    },
+    {
+      "id": 126
+    },
+    {
+      "id": 127
+    },
+    {
+      "id": 128
+    },
+    {
+      "id": 129
+    },
+    {
+      "id": 130
+    },
+    {
+      "id": 131
+    },
+    {
+      "id": 132
+    },
+    {
+      "id": 133
+    },
+    {
+      "id": 134
+    },
+    {
+      "id": 135
+    },
+    {
+      "name": "123123",
+      "price": 23213,
+      "description": "23213",
+      "category": "Health",
+      "id": 136
+    },
+    {
+      "name": "13",
+      "price": 123,
+      "description": "123",
+      "category": "Baby",
+      "id": 137
+    },
+    {
+      "name": "123123",
+      "price": 3123123,
+      "description": "123123",
+      "category": "Baby",
+      "id": 138
+    },
+    {
+      "name": "213123",
+      "price": 123123,
+      "description": "123123",
+      "category": "Baby",
+      "id": 139
     }
   ]
 }

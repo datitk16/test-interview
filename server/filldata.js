@@ -12,7 +12,7 @@ for (let i = 1; i <= 100; i++) {
     description: faker.commerce.productName(),
     name: faker.commerce.product(),
     imageUrl: faker.image.avatar(),
-    status: faker.datatype.boolean(),
+    status: true,
     category: faker.commerce.department()
   });
 }

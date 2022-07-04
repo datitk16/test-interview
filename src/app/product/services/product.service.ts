@@ -46,4 +46,22 @@ export class ProductService {
       )
   }
 
+  updateProduct(product: Product): Observable<Product> {
+    return this.http
+      .put<Product>(environment.serverAddress + '/' + product.id, JSON.stringify(product), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  createProduct(product: Product): Observable<Product> {
+    return this.http
+      .post<Product>(environment.serverAddress, JSON.stringify(product), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Product } from './../models/product.model';
 import { createAction, props } from '@ngrx/store';
 
-export const setAddNewProduct = createAction(
+export const setAddOrUpdateProduct = createAction(
   '[Product] Add New Product',
   props<{ product: Product }>()
 );

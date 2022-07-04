@@ -1,20 +1,19 @@
+import { switchMap, tap, map } from 'rxjs/operators';
 import { setProductCategories } from './../+state/product.actions';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { ProductRequest } from './../models/product-request.model';
 import { Product } from './../models/product.model';
 import { ProductModalComponent } from './../product-modal/product-modal.component';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../services/product.service';
-import { from, Observable } from 'rxjs';
-import { PaginationResult } from 'src/app/shared/models/pagination-result.model';
 import { MatDialogModalService } from 'src/app/core/services/mat-dialog-modal.service';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppState } from 'src/app/+state/app.state';
 import { Store } from '@ngrx/store';
-import { selectAddNewProduct } from '../+state/product.selectors';
 import { Constants } from 'src/app/shared/constants';
+import { selectAddOrUpdateProduct } from '../+state/product.selectors';
+import { from } from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -27,6 +26,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   sortedData = new Array<Product>();
   dataSource = new MatTableDataSource<Product>();
   dataSourceOrigin = new Array<Product>();
+  isUpdate: boolean;
 
   constructor(
     private dialog: MatDialog,
@@ -38,25 +38,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.reloadData();
-    // this.store.select(selectAddNewProduct).pipe(untilDestroyed(this)).subscribe(result => {
-    //   if (!Constants.isEmpty(result)) {
-    //     console.log(result)
-    //   }
-    // });
+    this.store.select(selectAddOrUpdateProduct)
+      .pipe(untilDestroyed(this), tap((result: Product) => {
+        this.isUpdate = result && result.id ? true : false;
+      }), switchMap((product: any) => !Constants.isEmpty(product) ? (product.id ? this.productService.updateProduct(product) : this.productService.createProduct(product)) : from([])))
+      .subscribe((res) => {
+        if (res) {
+          this.reloadData();
+          this.dialogMessage.showInfoMessage(this.isUpdate ? 'Updated success' : 'Created success');
+        }
+      });
   }
 
   ngOnDestroy() { }
-
-  addNewProduct() {
-    const dialogRef = this.dialog.open(ProductModalComponent, {
-      width: '250px',
-      data: { name: 'this.name', animal: ' this.animal' },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
 
   deleteItem(id: number) {
     this.dialogMessage.showConfirmMessage('Are you sure want delete product?', () => {
@@ -107,6 +101,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.dataSource.data = value === 'clear' ? this.dataSourceOrigin : this.dataSourceOrigin.filter(x => x.category === value);
   }
 
+  updateProduct(product: Product) {
+    this.dialog.open(ProductModalComponent, {
+      width: Constants.modalWith,
+      data: { product },
+    });
+  }
+
+  viewProduct(product: Product) {
+    this.dialog.open(ProductModalComponent, {
+      width: Constants.modalWith,
+      data: { product, viewProduct: true },
+    });
+  }
+
   private reloadData() {
     this.productService.getProducts().subscribe(products => {
       this.dataSource.data = products;
@@ -117,10 +125,5 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   private compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
-
-  protected getDataList(request: ProductRequest): Observable<PaginationResult<Product>> {
-    return from([]);
-
   }
 }

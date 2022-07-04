@@ -5,7 +5,7 @@ import { AppState } from '../../+state/app.state';
 
 export const selectProductsState = (state: AppState) => state.productState;
 
-export const selectAddNewProduct = createSelector(
+export const selectAddOrUpdateProduct = createSelector(
   selectProductsState,
   (state: ProductsState) => state.product
 );

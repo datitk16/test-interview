@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { ProductModalComponent } from './product-modal/product-modal.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from './services/product.service';
 import { CommonModule } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';
@@ -52,6 +52,9 @@ const routes: Routes = [
   ],
   providers: [
     ProductService,
-  ]
+  ],
+  entryComponents: [
+    ProductModalComponent
+  ],
 })
 export class ProductModule { }

@@ -6,5 +6,6 @@ export class Constants {
       return false;
     }
     return true;
-  }
+  };
+  static modalWith = '400px';
 }

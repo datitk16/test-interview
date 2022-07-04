@@ -1,3 +1,4 @@
+import { Constants } from 'src/app/shared/constants';
 import { selectProductCategories } from './../+state/product.selectors';
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -44,7 +45,7 @@ export class TableTopBarComponent implements OnInit, OnDestroy {
 
   addNewProduct() {
     this.dialog.open(ProductModalComponent, {
-      width: '300px',
+      width: Constants.modalWith,
     });
   }
 

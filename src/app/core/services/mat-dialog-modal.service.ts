@@ -1,3 +1,4 @@
+import { Constants } from 'src/app/shared/constants';
 import { map, tap } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Injectable, OnDestroy } from '@angular/core';
@@ -33,8 +34,8 @@ export class MatDialogModalService implements IDialogMessage, OnDestroy {
         messageText: message,
         onOkHandler: onOkHandler
       },
-    }
-    );
+      width: Constants.modalWith
+    })
   }
 
   showErrorMessage(message: string, onOkHandler: () => void): void {
@@ -44,7 +45,8 @@ export class MatDialogModalService implements IDialogMessage, OnDestroy {
         titleIcon: '',
         titleClass: 'error',
         messageText: message,
-      }
+      },
+      width: Constants.modalWith
     })
   }
 
@@ -61,7 +63,8 @@ export class MatDialogModalService implements IDialogMessage, OnDestroy {
         messageText: message,
         onOkHandler: onOkHandler,
         showCancelBtn: onCancelHandler
-      }
+      },
+      width: Constants.modalWith
     }).subscribe((res) => {
       if (res === 1) {
         onOkHandler();

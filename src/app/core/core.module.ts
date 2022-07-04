@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogMessageModalComponent } from './components/dialog-message-modal/dialog-message-modal.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -33,6 +33,6 @@ import { reducer } from '../+state/app.reducer';
   ],
   exports: [
     DashboardLayoutComponent
-  ]
+  ],
 })
 export class CoreModule { }
