@@ -52,6 +52,10 @@ export class TableTopBarComponent implements OnInit, OnDestroy {
   selectCategory(value: string) {
     this.category.emit(value)
   }
+
+  syncData() {
+
+  }
 }
 
 

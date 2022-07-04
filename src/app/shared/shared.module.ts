@@ -1,3 +1,4 @@
+import { PriceDirective } from './directives/price.directive';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -10,6 +11,10 @@ import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
+    PriceDirective
+  ],
+  exports: [
+    PriceDirective
   ],
   imports: [
     CommonModule,
@@ -20,5 +25,6 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     MatSortModule
   ],
+
 })
 export class SharedModule { }
